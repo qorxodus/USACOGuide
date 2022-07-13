@@ -7,7 +7,7 @@ public class USACO2018FebBronze_Teleportation {
 	static PrintWriter out;
 	static int a, b, x, y;
 	
-	public static void main (String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 		
 		//in = new Scanner(System.in);
 		in = new Scanner(new File("teleport.in"));
@@ -18,7 +18,6 @@ public class USACO2018FebBronze_Teleportation {
 		
 		in.close();
 		out.close();
-		
 	}
 	
 	static void init() {

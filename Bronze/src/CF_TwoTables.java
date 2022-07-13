@@ -1,11 +1,11 @@
 import java.io.*;
 import java.util.*;
 
-public class CF_WhiteSheet {
+public class CF_TwoTables {
 	
 	static Scanner in;
 	static PrintWriter out;
-	static int x1, x2, x3, x4, x5, x6, y1, y2, y3, y4, y5, y6;
+	static int t;
 	
 	public static void main(String[] args) throws IOException {
 		
@@ -13,8 +13,11 @@ public class CF_WhiteSheet {
 		//in = new Scanner(new File("billboard.in"));
 		//out = new PrintWriter(new File("billboard.out"));
 		
+		
 		init();
-		solve();
+		for(int i = 0; i < t; i++) {
+			solve();
+		}
 		
 		in.close();
 		//out.close();
@@ -22,22 +25,19 @@ public class CF_WhiteSheet {
 	
 	static void init() {
 		
-		x1 = in.nextInt();
-		y1 = in.nextInt();
-		x2 = in.nextInt();
-		y2 = in.nextInt();
-		x3 = in.nextInt();
-		y3 = in.nextInt();
-		x4 = in.nextInt();
-		y4 = in.nextInt();
-		x5 = in.nextInt();
-		y5 = in.nextInt();
-		x6 = in.nextInt();
-		y6 = in.nextInt();
+		t = in.nextInt();
 	}
 	
 	static void solve() {
 		
-		
+		int w, h, x1, x2, y1, y2, W, H;
+		w = in.nextInt();
+		h = in.nextInt();
+		x1 = in.nextInt();
+		y1 = in.nextInt();
+		x2 = in.nextInt();
+		y2 = in.nextInt();
+		W = in.nextInt();
+		H = in.nextInt();
 	}
 }

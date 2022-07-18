@@ -1,60 +1,65 @@
 import java.util.*;
+import java.io.*;
 
 public class CF_WhiteSheet {
 	
 	static Scanner in;
+	static PrintWriter out;
 	static rectangle white, black1, black2;
 	
 	public static void main(String[] args) {
 		
 		in = new Scanner(System.in);
+ 
 		init();
 		solve();
+ 
+		in.close();
 	}
-	
+ 
 	static void init() {
 		
-		white = new rectangle(in.nextLong(), in.nextLong(), in.nextLong(), in.nextLong());
-		black1 = new rectangle(in.nextLong(), in.nextLong(), in.nextLong(), in.nextLong());
-		black2 = new rectangle(in.nextLong(), in.nextLong(), in.nextLong(), in.nextLong());
+		white = new rectangle(in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt());
+		black1 = new rectangle(in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt());
+		black2 = new rectangle(in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt());
 	}
-	
+ 
 	static void solve() {
 		
-		long intersection = overlap(white, black1) + overlap(white, black2) - overlap(white, black1, black2);
-		long whiteArea = (white.x2 - white.x1)* (white.y2 - white.y1); 
+		long area = (long) (white.x2 - white.x1) * (white.y2 - white.y1);
+		long overlap = overlap(white, black1) + overlap(white, black2) - overlap(white, black1, black2);
 		
-		if(whiteArea <= intersection) System.out.println("NO");
-		else System.out.println("YES");
+		if(area > overlap) System.out.println("YES");
+		else System.out.println("NO");
 	}
 	
 	static long overlap(rectangle a, rectangle b) {
 		
-		long leftX = Math.max(a.x1, b.x1);
-		long rightX = Math.min(a.x2, b.x2);
-		long bottomY = Math.max(a.y1, b.y1);
-		long topY = Math.min(a.y2, b.y2);
+		long top = Math.min(a.y2, b.y2);
+		long bottom = Math.max(a.y1, b.y1);
+		long right = Math.min(a.x2, b.x2);
+		long left = Math.max(a.x1, b.x1);
 		
-		if(rightX - leftX <= 0 || topY - bottomY <= 0) return 0;
-		else return (rightX - leftX) * (topY - bottomY);
+		if(top < bottom || right < left) return 0;
+		else return (long) (top - bottom) * (right - left);
 	}
 	
 	static long overlap(rectangle a, rectangle b, rectangle c) {
 		
-		long leftX = Math.max(Math.max(a.x1, b.x1), c.x1);
-		long rightX = Math.min(Math.min(a.x2, b.x2), c.x2);
-		long bottomY = Math.max(Math.max(a.y1, b.y1), c.y1);
-		long topY = Math.max(Math.min(a.y2, b.y2), c.y2);
+		long top = Math.min(Math.min(a.y2, b.y2), c.y2);
+		long bottom = Math.max(Math.max(a.y1, b.y1), c.y1);
+		long right = Math.min(Math.min(a.x2, b.x2), c.x2);
+		long left = Math.max(Math.max(a.x1, b.x1), c.x1);
 		
-		if(rightX - leftX <= 0 || topY - bottomY <= 0) return 0;
-		else return (rightX - leftX) * (topY - bottomY);
+		if(top < bottom || right < left) return 0;
+		else return (long) (top - bottom) * (right - left);
 	}
-	
+ 
 	static class rectangle {
 		
-		long x1, y1, x2, y2;
+		int x1, y1, x2, y2;
 		
-		rectangle(long a, long b, long c, long d) {
+		rectangle(int a, int b, int c, int d) {
 			
 			x1 = a; y1 = b; x2 = c; y2 = d;
 		}

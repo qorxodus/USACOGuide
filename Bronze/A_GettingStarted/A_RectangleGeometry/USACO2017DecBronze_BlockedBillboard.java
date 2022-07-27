@@ -1,3 +1,4 @@
+package A_RectangleGeometry;
 import java.io.*;
 import java.util.*;
 

@@ -1,7 +1,8 @@
+package A_ExpectedKnowledge;
 import java.util.*;
 import java.io.*;
 
-public class USACO2019USOpenBronze_BucketBrigade {
+public class USACO2019USBronze_BucketBrigade {
 
 	static Scanner in;
 	static PrintWriter out;

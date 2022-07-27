@@ -1,7 +1,8 @@
+package A_RectangleGeometry;
 import java.util.*;
 import java.io.*;
 
-public class CF_WhiteSheet {
+public class Codeforces_WhiteSheet {
 	
 	static Scanner in;
 	static PrintWriter out;

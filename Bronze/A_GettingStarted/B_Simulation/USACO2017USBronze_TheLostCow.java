@@ -1,7 +1,8 @@
+package B_Simulation;
 import java.io.*;
 import java.util.*;
 
-public class USACO2017USOpenBronze_TheLostCow {
+public class USACO2017USBronze_TheLostCow {
 	
 	static Scanner in;
 	static PrintWriter out;

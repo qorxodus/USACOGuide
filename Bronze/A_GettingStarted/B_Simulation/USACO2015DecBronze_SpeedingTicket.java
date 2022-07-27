@@ -1,3 +1,4 @@
+package B_Simulation;
 import java.io.*;
 import java.util.*;
 
@@ -28,16 +29,14 @@ public class USACO2015DecBronze_SpeedingTicket {
 		for(int i = 0; i < n; i++) {
 			int num1 = in.nextInt();
 			int num2 = in.nextInt();
-			for(int j = 0; j < num1; j++) {
+			for(int j = 0; j < num1; j++)
 				limit.add(num2);
-			}
 		}
 		for(int i = 0; i < m; i++) {
 			int num1 = in.nextInt();
 			int num2 = in.nextInt();
-			for(int j = 0; j < num1; j++) {
+			for(int j = 0; j < num1; j++)
 				speed.add(num2);
-			}
 		}
 	}
 	
@@ -45,9 +44,8 @@ public class USACO2015DecBronze_SpeedingTicket {
 		
 		int max = 0;
 		
-		for(int i = 0; i < 100; i++) {
+		for(int i = 0; i < 100; i++)
 			if(speed.get(i) - limit.get(i) > max) max = speed.get(i) - limit.get(i);
-		}
 		
 		out.println(max);
 	}

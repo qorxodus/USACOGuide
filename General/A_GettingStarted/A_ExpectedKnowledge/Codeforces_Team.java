@@ -1,6 +1,7 @@
+package A_ExpectedKnowledge;
 import java.util.*;
 
-public class CF_Team {
+public class Codeforces_Team {
 	
 	static Scanner in;
 	static int n, sum, cnt;

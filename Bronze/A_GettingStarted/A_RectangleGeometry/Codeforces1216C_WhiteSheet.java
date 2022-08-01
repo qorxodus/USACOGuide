@@ -2,7 +2,7 @@ package A_RectangleGeometry;
 import java.util.*;
 import java.io.*;
 
-public class Codeforces_WhiteSheet {
+public class Codeforces1216C_WhiteSheet {
 	
 	static Scanner in;
 	static PrintWriter out;

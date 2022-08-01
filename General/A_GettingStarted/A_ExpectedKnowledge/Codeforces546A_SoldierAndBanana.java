@@ -1,7 +1,7 @@
 package A_ExpectedKnowledge;
 import java.util.*;
 
-public class Codeforces_SoldierAndBanana {
+public class Codeforces546A_SoldierAndBanana {
 	
 	static Scanner in;
 	static int k, n, w;

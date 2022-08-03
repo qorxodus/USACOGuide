@@ -28,6 +28,8 @@ public class USACO2015FebBronze_Censoring {
     }
     
     static void solve() {
+    	
+    	StringBuilder sb = new StringBuilder();
     	  
     	while(s.indexOf(t) > 0) {
     		s = s.substring(0, s.indexOf(t)) + s.substring(s.indexOf(t) + t.length());

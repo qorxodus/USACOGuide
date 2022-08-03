@@ -67,11 +67,11 @@ public class USACO2019FebBronze_MeasuringTraffic {
     		if(d[i].equals("off")) {
     			L -= r[i];
     			R -= l[i];
+    			if(L < 0) L = 0;
     		}
     		else {
     			L += l[i];
     			R += r[i];
-    			if(L < 0) L = 0;
     		}
     	}
     	

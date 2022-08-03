@@ -36,30 +36,27 @@ public class USACO2018JanBronze_BlockedBillboard2 {
 		y3 = in.nextInt() + 1000;
 		x4 = in.nextInt() + 1000;
 		y4 = in.nextInt() + 1000;
+		
 		a = new boolean[2001][2001];
 	}
 	
 	static void solve() {
 		
 		for(int i = x1; i < x2; i++) {
-			for (int j = y1; j < y2; j++) {
-				a[i][j] = true;
-			}
+			for(int j = y1; j < y2; j++) a[i][j] = true;
 		}
 		
 		for(int i = x3; i < x4; i++) {
-			for (int j = y3; j < y4; j++) {
-				a[i][j] = false;
-			}
+			for(int j = y3; j < y4; j++) a[i][j] = false;
 		}
 		
 		for(int i = 0; i < 2001; i++) {
 			for(int j = 0; j < 2001; j++) {
 				if(a[i][j]) {
-					minX = Math.min (minX, i);
-					maxX = Math.max (maxX, i);
-					minY = Math.min (minY, j);
-					maxY = Math.max (maxY, j);
+					minX = Math.min(minX, i);
+					maxX = Math.max(maxX, i);
+					minY = Math.min(minY, j);
+					maxY = Math.max(maxY, j);
 				}
 			}
 		}

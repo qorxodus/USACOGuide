@@ -11,15 +11,15 @@ public class USACO2019FebBronze_MeasuringTraffic {
     
     public static void main(String[] args) throws IOException {
 
-        in = new Scanner(System.in);        
-		//in = new Scanner(new File("traffic.in"));
-		//out = new PrintWriter(new File("traffic.out"));
+        //in = new Scanner(System.in);        
+		in = new Scanner(new File("traffic.in"));
+		out = new PrintWriter(new File("traffic.out"));
 		
         init();
         solve();
         
         in.close();
-        //out.close();
+        out.close();
     }
     
     static void init() {    
@@ -42,40 +42,40 @@ public class USACO2019FebBronze_MeasuringTraffic {
     	int R = 999999999;
     	
     	for(int i = n - 1; i >= 0; i--) {
-    		if(d[i].equals("none")) {
-    			L = Math.max(L, l[i]);
-    			R = Math.max(R, r[i]);
-    		}
-    		if(d[i].equals("off")) {
-    			L += l[i];
-    			R += r[i];
-    		}
-    		else {
+    		if(d[i].equals("on")) {
     			L -= r[i];
     			R -= l[i];
     			if(L < 0) L = 0;
-    		}
+            }
+            else if(d[i].equals("off")){
+            	L += l[i];
+    			R += r[i];
+            }
+            else {
+            	L = Math.max(L, l[i]);
+    			R = Math.min(R, r[i]);
+            }
     	}
     	
-    	System.out.println(L + " " + R);
+    	out.println(L + " " + R);
     	
     	for(int i = 0; i < n; i++) {
-    		if(d[i].equals("none")) {
-    			L = Math.max(L, l[i]);
-    			R = Math.max(R, r[i]);
-    		} 
     		if(d[i].equals("off")) {
     			L -= r[i];
     			R -= l[i];
     			if(L < 0) L = 0;
-    		}
-    		else {
-    			L += l[i];
+            }
+            else if(d[i].equals("on")){
+            	L += l[i];
     			R += r[i];
-    		}
+            }
+            else {
+            	L = Math.max(L, l[i]);
+    			R = Math.min(R, r[i]);
+            }
     	}
     	
-    	System.out.println(L + " " + R);
+    	out.println(L + " " + R);
     }
 }
 

@@ -6,22 +6,36 @@ public class USACO2017DecBronze_MilkMeasurement {
 
     static Scanner in;
 	static PrintWriter out;
-	static int output[] = {7, 7, 7}, n, ans = 0;
-	static boolean leaderboard[] = {true, true, true};
-	static TreeMap<Integer, Integer> day_cow = new TreeMap<Integer, Integer>();
-	static TreeMap<Integer, String> cow_change = new TreeMap<Integer, String>();
-    
+	static int n;
+	static ArrayList<triple> a = new ArrayList<triple>();
+	
     public static void main(String[] args) throws IOException {
 
-        in = new Scanner(System.in);        
-		//in = new Scanner(new File("traffic.in"));
-		//out = new PrintWriter(new File("traffic.out"));
+        //in = new Scanner(System.in);        
+		in = new Scanner(new File("measurement.in"));
+		out = new PrintWriter(new File("measurement.out"));
 		
         init();
         solve();
         
         in.close();
-        //out.close();
+        out.close();
+    }
+    
+    static class triple implements Comparable<triple> {
+
+        int day; String name; int milk;
+        
+        triple(int a, String b, int c) {
+            day = a;
+            name = b;
+            milk = c;
+        }
+        
+        @Override
+        public int compareTo(triple o) {            
+            return this.day - o.day;
+        }
     }
     
     static void init() {    
@@ -31,41 +45,34 @@ public class USACO2017DecBronze_MilkMeasurement {
     	for(int i = 0; i < n; i++) {
     		int day = in.nextInt();
     		String name = in.next();
-    		int cow;
-    		if(name.equals("Bessie")) cow = 0;
-    		else if(name.equals("Elsie")) cow = 1;
-    		else cow = 2;
-    		String change = in.next();
-    		day_cow.put(day, cow);
-    		cow_change.put(cow, change);
+    		int milk = in.nextInt();
+    		a.add(new triple(day, name, milk));
     	}
+    	
+    	Collections.sort(a);
     }
     
     static void solve() {
-    	  
+    	
+    	int[] cow = {7, 7, 7};
+    	boolean[] leaderboard = {true, true, true};
+    	int ans = 0;
+    	
     	for(int i = 0; i < n; i++) {
-    		int cow = (int)day_cow.values().toArray()[i];
-    		String change = (String)cow_change.get(cow);
-    		if(change.charAt(0) == '+') output[cow] += Integer.parseInt(change.substring(1));
-			else output[cow] -= Integer.parseInt(change.substring(1));
-    		ArrayList<Integer> index = new ArrayList<Integer>();
-    		int max = 0;
+    		String name = a.get(i).name;
+    		int milk = a.get(i).milk;
+    		if(name.equals("Bessie")) cow[0] += milk;
+    		else if(name.equals("Elsie")) cow[1] += milk;
+    		else cow[2] += milk;
+    		int max = Math.max(cow[0], Math.max(cow[1], cow[2]));
+    		boolean[] previous = leaderboard.clone();
     		for(int j = 0; j < 3; j++) {
-    			if(output[j] > max) {
-    				max = output[j];
-    				index.clear();
-    				index.add(j);
-    			}
-    			if(output[j] == max) index.add(j);
+    			if(cow[j] == max) leaderboard[j] = true;
+    			else leaderboard[j] = false;
     		}
-    		boolean[] temp = leaderboard;
-			leaderboard = new boolean[] {false, false, false};
-    		for(int j = 0; j < index.size(); j++) {
-    			leaderboard[j] = true;
-    		}
-    		if(!Arrays.equals(temp, leaderboard)) ans++;
+    		if(!Arrays.equals(previous, leaderboard)) ans++;
     	}
     	
-    	System.out.println(ans);
+    	out.println(ans);
     }
 }

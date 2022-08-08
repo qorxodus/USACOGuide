@@ -10,15 +10,15 @@ public class USACO2015FebBronze_Censoring {
     
     public static void main(String[] args) throws IOException {
 
-        in = new Scanner(System.in);        
-		//in = new Scanner(new File("censor.in"));
-		//out = new PrintWriter(new File("censor.out"));
+        //in = new Scanner(System.in);        
+		in = new Scanner(new File("censor.in"));
+		out = new PrintWriter(new File("censor.out"));
 		
         init();
         solve();
         
         in.close();
-        //out.close();
+        out.close();
     }
     
     static void init() {    
@@ -31,10 +31,13 @@ public class USACO2015FebBronze_Censoring {
     	
     	StringBuilder sb = new StringBuilder();
     	  
-    	while(s.indexOf(t) > 0) {
-    		s = s.substring(0, s.indexOf(t)) + s.substring(s.indexOf(t) + t.length());
-    	}
+    	for(int i = 0; i < s.length(); i++) {
+			sb.append(s.charAt(i));
+			if(sb.length() >= t.length() && sb.substring(sb.length() - t.length(), sb.length()).equals(t)) {
+				sb.delete(sb.length() - t.length(), sb.length() + 1);
+			}
+		}
     	
-    	System.out.println(s);
+    	out.println(sb);
     }
 }

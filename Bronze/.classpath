@@ -6,5 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="A_GettingStarted"/>
+	<classpathentry kind="src" path="B_CompleteSearch"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
